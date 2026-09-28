@@ -1497,3 +1497,14 @@
 .erro-404 h1 { font-size: clamp(2.4rem, 8vw, 4.5rem); font-weight: 300; font-stretch: 100%; letter-spacing: -0.035em; }
 .erro-404 p:not(.eyebrow) { color: var(--suave); }
 .erro-404 .visite-botoes { justify-content: center; }
+
+/* ---------- Header fixo no mobile (todas as páginas) ---------- */
+/* o menu fica sempre à mão, sem precisar voltar ao topo; na home o header
+   já é fixed sobre o vídeo (.site-header--vidro) */
+@media (max-width: 59.99em) {
+  .site-header:not(.site-header--vidro) { position: sticky; top: 0; }
+  /* a faixa de categorias gruda logo abaixo do header */
+  .grupos-nav { top: var(--header-h); }
+  /* atalhos param a seção abaixo do header + faixa de categorias */
+  .grupo, .categoria { scroll-margin-top: calc(var(--header-h) + 3.5rem); }
+}

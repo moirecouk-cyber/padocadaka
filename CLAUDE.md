@@ -504,6 +504,7 @@ Pedidas ou aprovadas pelo Rafael. Valem por cima do resto do brief; não desfaze
 
 **Histórico — estilo Kimi (substituído):** a home foi "igual ao site do Kimi" (`C:\Users\rafae\Kimi sushi`) antes da direção atual.
 - Header com a mascote no centro e links nos dois lados, em caixa alta espaçada; transparente sobre o vídeo na home.
+- **No mobile o header é sempre fixo no topo** (pedido do Rafael: o menu fica à mão sem voltar ao topo). Nas páginas internas é sticky; a faixa de categorias gruda logo abaixo dele (`top: var(--header-h)`).
 - Eyebrow em caixa alta pequena acima dos títulos do hero e destaque de cor no fim do título (dourado `--casca` sobre escuro, `--bordo-ka` sobre creme).
 - Títulos e números finos (peso 300). Botões e links de texto em caixa alta pequena e espaçada, botão principal de contorno fino.
 - Continua Bricolage Grotesque (o Kimi usa Fraunces; trocar só se o Rafael pedir).
