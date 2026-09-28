@@ -1,0 +1,102 @@
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--fonte);
+  font-size: var(--fs-0);
+  line-height: 1.55;
+  color: var(--tinta);
+  background-color: var(--pagina);
+  background-image: var(--papel);
+  transition: background-color 0.8s ease, color 0.8s ease;
+  -webkit-font-smoothing: antialiased;
+  /* espaço para a barra fixa mobile */
+  padding-bottom: calc(var(--barra-h) + env(safe-area-inset-bottom));
+}
+@media (min-width: 60em) {
+  body { padding-bottom: 0; }
+}
+
+/* clip (não hidden): corta a sobra das fotos giradas sem quebrar o sticky da vitrine */
+main { flex: 1; overflow-x: clip; }
+
+[id] { scroll-margin-top: var(--header-h); }
+
+img, svg { display: block; max-width: 100%; height: auto; }
+
+h1, h2, h3 {
+  font-weight: 750;
+  font-stretch: 85%;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  text-wrap: balance;
+}
+h1 { font-size: var(--fs-4); }
+/* títulos de seção finos e largos, no tom do hero */
+h2 {
+  font-size: clamp(2rem, 5.5vw, 3.25rem);
+  font-weight: 300;
+  font-stretch: 100%;
+  letter-spacing: -0.025em;
+}
+h3 { font-size: var(--fs-1); }
+
+p { max-width: 70ch; text-wrap: pretty; }
+
+a { color: inherit; text-underline-offset: 0.2em; }
+
+button { font: inherit; color: inherit; cursor: pointer; }
+
+ul[role="list"] { list-style: none; padding: 0; }
+
+/* o atributo hidden sempre esconde, mesmo em componentes com display próprio */
+[hidden] { display: none !important; }
+
+:focus-visible {
+  outline: 3px solid var(--foco);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  width: min(100% - 2rem, var(--max));
+  margin-inline: auto;
+}
+
+.pular {
+  position: absolute;
+  left: var(--s0);
+  top: -100px;
+  z-index: 100;
+  padding: var(--s-1) var(--s0);
+  background: var(--etiqueta);
+  color: var(--bordo-ka);
+  font-weight: 650;
+}
+.pular:focus { top: var(--s-1); }
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

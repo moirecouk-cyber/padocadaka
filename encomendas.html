@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Encomendas de salgados e bolos | Padoca da Ka Joinville</title>
+  <meta name="description" content="Salgados por cento, bolos, docinhos, coffee break e cestas. Monte e envie pelo WhatsApp.">
+  <!-- SEO (gerado por tools/atualizar-seo.cjs; domínio em DOMINIO) -->
+  <link rel="canonical" href="https://padocadaka.com.br/encomendas.html">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Padoca da Ka">
+  <meta property="og:title" content="Encomendas de salgados e bolos | Padoca da Ka Joinville">
+  <meta property="og:description" content="Salgados por cento, bolos, docinhos, coffee break e cestas. Monte e envie pelo WhatsApp.">
+  <meta property="og:url" content="https://padocadaka.com.br/encomendas.html">
+  <meta property="og:image" content="https://padocadaka.com.br/assets/og/padoca-da-ka.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mascote da Padoca da Ka sobre fundo bordô e foto da Ka no balcão">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Padoca da Ka",
+    "image": "https://padocadaka.com.br/assets/og/padoca-da-ka.jpg",
+    "logo": "https://padocadaka.com.br/assets/brand/mascote-640.webp",
+    "url": "https://padocadaka.com.br/",
+    "telephone": "+55-47-99943-1617",
+    "priceRange": "$",
+    "servesCuisine": "Padaria",
+    "paymentAccepted": "Pix, Cartão de crédito, Cartão de débito, Dinheiro",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. São Firmino, 555",
+      "addressLocality": "Joinville",
+      "addressRegion": "SC",
+      "postalCode": "89237-355",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.2920769,
+      "longitude": -48.9109379
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "07:00",
+        "closes": "19:30"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/padocada.ka/"
+    ],
+    "hasMenu": "https://padocadaka.com.br/cardapio.html"
+  }
+  </script>
+  <!-- /SEO -->
+  <meta name="theme-color" content="#6D020C">
+  <link rel="icon" href="assets/brand/favicon-48.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // foto que ainda não existe: vira moldura com o nome dela (ver .foto.vazia)
+    addEventListener('error', function (e) {
+      var i = e.target;
+      if (i.tagName !== 'IMG') return;
+      var f = i.closest('.foto');
+      if (f) f.classList.add('vazia');
+      if (f) i.remove();
+    }, true);
+  </script>
+  <script src="js/config.js" defer></script>
+  <script src="js/cardapio-data.js" defer></script>
+  <script src="js/status.js" defer></script>
+  <script src="js/main.js" defer></script>
+  <script src="js/encomendas.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-linha">
+      <a class="logo" href="index.html" aria-label="Padoca da Ka, início">
+        <img src="assets/brand/mascote-160.webp" srcset="assets/brand/mascote-160.webp 160w, assets/brand/mascote-320.webp 320w" sizes="(min-width: 60em) 96px, 64px" alt="" width="160" height="136">
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <svg class="abrir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        <svg class="fechar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <!-- dois grupos com a logo no meio (desktop); no mobile viram uma lista só -->
+      <nav class="nav" id="menu" aria-label="Principal">
+        <ul class="nav-esq" role="list">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+        </ul>
+        <ul class="nav-dir" role="list">
+          <li><a href="encomendas.html" aria-current="page">Encomendas</a></li>
+          <li><a href="visite.html">Visite</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao enc-topo" aria-labelledby="t-encomendas">
+      <div class="container">
+        <p class="eyebrow">Pelo WhatsApp</p>
+        <h1 id="t-encomendas">Encomendas</h1>
+        <ol class="passos" role="list">
+          <li><span>1</span> Escolha</li>
+          <li><span>2</span> Marque a data</li>
+          <li><span>3</span> Envie no WhatsApp</li>
+        </ol>
+      </div>
+    </section>
+
+    <nav class="grupos-nav" aria-label="Tipos de encomenda">
+      <div class="container" data-grupos-nav></div>
+    </nav>
+
+    <div class="container montador">
+      <!-- grupos e itens vêm de js/cardapio-data.js (window.ENCOMENDAS) -->
+      <div class="montador__itens" data-montador>
+        <noscript><p>O montador de encomendas precisa de JavaScript. Pode pedir direto no <a href="https://wa.me/5547999431617">WhatsApp (47) 99943-1617</a>.</p></noscript>
+      </div>
+
+      <aside class="montador__pedido" id="sacola" aria-labelledby="t-pedido">
+        <form id="pedido" class="pedido" novalidate>
+          <div class="pedido__topo">
+            <h2 id="t-pedido" tabindex="-1">Sua sacola</h2>
+            <!-- só no mobile, quando a sacola abre por cima da página -->
+            <button type="button" class="pedido__fechar" data-fechar-sacola aria-label="Fechar sacola">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </div>
+          <ul class="resumo" role="list" data-resumo></ul>
+          <!-- sugestão complementar conforme o que está na sacola (grupos com "sugere" em cardapio-data.js) -->
+          <div class="bump" data-bump hidden>
+            <p class="bump__rotulo">Combina com o seu pedido</p>
+            <div class="bump__corpo">
+              <div class="bump__texto">
+                <strong data-bump-nome></strong>
+                <span data-bump-chamada></span>
+              </div>
+              <span class="bump__preco" data-bump-preco></span>
+            </div>
+            <div class="bump__acoes">
+              <button type="button" class="btn bump__add" data-bump-add>Adicionar</button>
+              <button type="button" class="bump__nao" data-bump-nao>Agora não</button>
+            </div>
+          </div>
+          <p class="resumo__total">Total estimado <strong data-total>R$ 0,00</strong></p>
+          <p class="resumo__nota">Valor confirmado no WhatsApp.</p>
+          <div data-avisos></div>
+
+          <fieldset class="campo campo--modo">
+            <legend>Como vai ser?</legend>
+            <label class="chip"><input type="radio" name="modo" value="retirada" checked><span>Retirar na loja</span></label>
+            <label class="chip"><input type="radio" name="modo" value="entrega"><span>Entrega</span></label>
+          </fieldset>
+          <div class="campo">
+            <label for="f-nome">Seu nome</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="campo-duplo">
+            <div class="campo">
+              <label for="f-data">Data</label>
+              <input id="f-data" name="data" type="date" required aria-describedby="f-data-dica">
+            </div>
+            <div class="campo">
+              <label for="f-hora">Horário</label>
+              <select id="f-hora" name="hora" required></select>
+            </div>
+          </div>
+          <p class="campo__dica" id="f-data-dica" data-data-dica></p>
+          <div class="campo" data-endereco hidden>
+            <label for="f-endereco">Endereço de entrega</label>
+            <input id="f-endereco" name="endereco" type="text" autocomplete="street-address">
+          </div>
+          <div class="campo">
+            <label for="f-obs">Observação <span>(opcional)</span></label>
+            <textarea id="f-obs" name="obs" rows="2"></textarea>
+          </div>
+
+          <div class="erros" data-erros role="alert" tabindex="-1" hidden></div>
+          <a class="p-enviar btn" href="#pedido" data-enviar aria-disabled="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+            Enviar no WhatsApp
+          </a>
+        </form>
+      </aside>
+    </div>
+
+    <section class="secao" aria-labelledby="t-duvidas">
+      <div class="container duvidas">
+        <h2 id="t-duvidas">Dúvidas</h2>
+        <div data-duvidas></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="rodape-grid">
+        <a class="logo" href="index.html" aria-label="Padoca da Ka, início">
+          <img src="assets/brand/mascote-160.webp" srcset="assets/brand/mascote-160.webp 160w, assets/brand/mascote-320.webp 320w" sizes="96px" alt="" width="160" height="136" loading="lazy">
+        </a>
+        <div>
+          <h2>Endereço</h2>
+          <address>
+            R. São Firmino, 555 — Vila Nova<br>
+            Joinville — SC, 89237-355
+          </address>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">Como chegar</a>
+        </div>
+        <div>
+          <h2>Horário</h2>
+          <p>Todos os dias, das 7h às 19h30</p>
+        </div>
+        <div>
+          <h2>Fale com a gente</h2>
+          <ul>
+            <li><a href="https://wa.me/5547999431617?text=Oi%2C%20Padoca%20da%20Ka!%20Quero%20fazer%20uma%20encomenda.">WhatsApp (47) 99943-1617</a></li>
+            <li><a href="https://www.instagram.com/padocada.ka/">Instagram @padocada.ka</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="credito">Site por Royco Studio</p>
+    </div>
+  </footer>
+
+  <!-- no mobile, a sacola fixa substitui a barra de atalhos nesta página e abre
+       o pedido por cima (gaveta), sem tirar o cliente de onde ele está -->
+  <div class="sacola-barra" data-sacola-barra>
+    <span><span data-contagem>Sacola vazia</span> · <strong data-total-curto>R$ 0,00</strong></span>
+    <button type="button" class="btn btn-claro" data-abrir-sacola aria-controls="sacola" aria-expanded="false">Ver sacola</button>
+  </div>
+  <div class="sacola-fundo" data-fechar-sacola hidden></div>
+</body>
+</html>

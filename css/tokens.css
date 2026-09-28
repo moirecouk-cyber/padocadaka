@@ -1,0 +1,65 @@
+/* Paleta da marca (aproximada a partir dos prints; conferir com o logo) */
+:root {
+  --bordo-ka: #6D020C;   /* tirado do fundo da logo oficial */
+  --bordo-forno: #3F060C;
+  --miolo: #FAF0E4;
+  --etiqueta: #FFFDF8;
+  --casca: #C8843F;   /* só em fundo bordô ou como detalhe: 2,7:1 sobre creme */
+  --bochecha: #F2A7A0;
+
+  --foco: var(--bordo-ka);
+
+  /* Tipografia: Bricolage Grotesque, escala 1,25 */
+  --fonte: "Bricolage Grotesque", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fs--1: 0.85rem;
+  --fs-0: 1.0625rem;
+  --fs-1: 1.33rem;
+  --fs-2: 1.66rem;
+  --fs-3: clamp(1.75rem, 5vw, 2.1rem);
+  --fs-4: clamp(2.25rem, 8vw, 3.25rem);
+
+  /* Espaços */
+  --s-1: 0.5rem;
+  --s0: 1rem;
+  --s1: 1.5rem;
+  --s2: 2rem;
+  --s3: 3rem;
+  --s4: 4.5rem;
+
+  --raio: 6px;
+  --max: 72rem;
+  --header-h: 4.25rem;
+  --barra-h: 3.75rem;
+}
+@media (min-width: 60em) {
+  :root { --header-h: 6.5rem; }
+}
+
+/* Clima do dia: o main.js põe data-periodo no <html> pela hora de Joinville.
+   Sem JS fica o da manhã. Componentes que ficam sobre a página usam estas
+   variáveis (--tinta, --suave, --acento, --linha), nunca cores fixas. */
+:root {
+  --pagina: var(--miolo);
+  --tinta: var(--bordo-forno);
+  --suave: rgb(63 6 12 / 0.72);
+  --acento: var(--bordo-ka);
+  --linha: rgb(63 6 12 / 0.14);
+  --tabua: #C9A27A;
+  /* papel de pão: grão sutil por cima da cor */
+  --papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .16 0 0 0 0 .08 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+html[data-periodo="tarde"] {
+  --pagina: #EEDBC1;
+  --suave: rgb(63 6 12 / 0.75);
+  --linha: rgb(63 6 12 / 0.16);
+  --tabua: #A87B52;
+}
+html[data-periodo="noite"] {
+  --pagina: #2E0508;
+  --tinta: #FAF0E4;
+  --suave: rgb(250 240 228 / 0.74);
+  --acento: #E9B377;
+  --linha: rgb(250 240 228 / 0.16);
+  --tabua: #6B3A22;
+  --foco: #E9B377;
+}

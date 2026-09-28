@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Padoca da Ka | Padaria no Vila Nova, Joinville</title>
+  <meta name="description" content="Pães, salgados, doces e café todos os dias na R. São Firmino, 555, Vila Nova. Encomendas pelo WhatsApp.">
+  <!-- SEO (gerado por tools/atualizar-seo.cjs; domínio em DOMINIO) -->
+  <link rel="canonical" href="https://padocadaka.com.br/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Padoca da Ka">
+  <meta property="og:title" content="Padoca da Ka | Padaria no Vila Nova, Joinville">
+  <meta property="og:description" content="Pães, salgados, doces e café todos os dias na R. São Firmino, 555, Vila Nova. Encomendas pelo WhatsApp.">
+  <meta property="og:url" content="https://padocadaka.com.br/">
+  <meta property="og:image" content="https://padocadaka.com.br/assets/og/padoca-da-ka.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Mascote da Padoca da Ka sobre fundo bordô e foto da Ka no balcão">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Bakery",
+    "name": "Padoca da Ka",
+    "image": "https://padocadaka.com.br/assets/og/padoca-da-ka.jpg",
+    "logo": "https://padocadaka.com.br/assets/brand/mascote-640.webp",
+    "url": "https://padocadaka.com.br/",
+    "telephone": "+55-47-99943-1617",
+    "priceRange": "$",
+    "servesCuisine": "Padaria",
+    "paymentAccepted": "Pix, Cartão de crédito, Cartão de débito, Dinheiro",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "R. São Firmino, 555",
+      "addressLocality": "Joinville",
+      "addressRegion": "SC",
+      "postalCode": "89237-355",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": -26.2920769,
+      "longitude": -48.9109379
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday"
+        ],
+        "opens": "07:00",
+        "closes": "19:30"
+      }
+    ],
+    "sameAs": [
+      "https://www.instagram.com/padocada.ka/"
+    ],
+    "hasMenu": "https://padocadaka.com.br/cardapio.html"
+  }
+  </script>
+  <!-- /SEO -->
+  <meta name="theme-color" content="#6D020C">
+  <link rel="icon" href="assets/brand/favicon-48.png" type="image/png">
+  <link rel="apple-touch-icon" href="assets/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // foto que ainda não existe: vira moldura com o nome dela (ver .foto.vazia)
+    addEventListener('error', function (e) {
+      var i = e.target;
+      if (i.tagName !== 'IMG') return;
+      var f = i.closest('.foto');
+      if (f) f.classList.add('vazia');
+      if (f || i.classList.contains('hero__midia')) i.remove();
+    }, true);
+  </script>
+  <script src="js/config.js" defer></script>
+  <script src="js/cardapio-data.js" defer></script>
+  <script src="js/status.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header site-header--vidro">
+    <div class="container header-linha">
+      <a class="logo" href="index.html" aria-label="Padoca da Ka, início">
+        <img src="assets/brand/mascote-160.webp" srcset="assets/brand/mascote-160.webp 160w, assets/brand/mascote-320.webp 320w" sizes="(min-width: 60em) 96px, 64px" alt="" width="160" height="136">
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <svg class="abrir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        <svg class="fechar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <!-- dois grupos com a logo no meio (desktop); no mobile viram uma lista só -->
+      <nav class="nav" id="menu" aria-label="Principal">
+        <ul class="nav-esq" role="list">
+          <li><a href="index.html" aria-current="page">Início</a></li>
+          <li><a href="cardapio.html">Cardápio</a></li>
+        </ul>
+        <ul class="nav-dir" role="list">
+          <li><a href="encomendas.html">Encomendas</a></li>
+          <li><a href="visite.html">Visite</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- Hero com vídeo (mantido a pedido do Rafael). O resto da home segue o
+         protótipo: relógio da fornada, vitrine, papel de pão e mural. -->
+    <div class="pilha">
+
+      <section class="painel painel--video" aria-labelledby="t-hero">
+        <div class="painel__folha">
+        <!-- Vídeo sem som, em loop. Poster opcional: assets/img/hero/hero-1440.webp -->
+        <video class="hero__midia" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+          <source src="assets/video/hero.mp4" type="video/mp4">
+        </video>
+        <div class="painel__veu" aria-hidden="true"></div>
+        <div class="container painel__conteudo">
+          <p class="eyebrow">Padaria · Vila Nova, Joinville</p>
+          <h1 id="t-hero" class="painel__titulo">Pão quentinho no Vila Nova, <em>todo dia.</em></h1>
+          <p class="selo" data-status role="status">Todos os dias, das 7h às 19h30</p>
+        </div>
+        <div class="faixa-info">
+          <div class="container">
+            <ul role="list">
+              <li>
+                <a href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  <span><strong>R. São Firmino, 555</strong> <span>Vila Nova, Joinville</span></span>
+                </a>
+              </li>
+              <li>
+                <a href="visite.html">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                  <span><strong>7h às 19h30</strong> <span>Todos os dias</span></span>
+                </a>
+              </li>
+              <li>
+                <a href="https://wa.me/5547999431617?text=Oi%2C%20Padoca%20da%20Ka!%20Vim%20pelo%20site.">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+                  <span><strong>WhatsApp</strong> <span>(47) 99943-1617</span></span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        </div>
+      </section>
+
+
+    </div>
+
+    <!-- Relógio da fornada: o que sai agora/próximo, pela hora de Joinville -->
+    <section class="secao relogio" id="fornadas" aria-labelledby="t-fornadas">
+      <div class="container relogio__grade">
+        <div class="relogio__texto">
+          <p class="eyebrow" data-rotulo>Próxima fornada</p>
+          <h2 id="t-fornadas" class="relogio__titulo"><span data-itens>Fornadas do dia</span> <em data-quando></em></h2>
+          <p class="relogio__contagem"><span data-falta-rotulo></span> <strong data-falta></strong></p>
+        </div>
+        <figure class="polaroide fita relogio__foto" data-polaroide>
+          <img data-foto-fornada src="assets/img/fornadas/cesto-paes-960.webp" sizes="(min-width: 60em) 340px, 46vw" width="960" height="1200" alt="">
+          <figcaption data-legenda>Fornadas do dia</figcaption>
+          <div class="carimbo" aria-hidden="true" data-carimbo>
+            <svg viewBox="0 0 200 200">
+              <defs><path id="volta-carimbo" d="M100 100m-82 0a82 82 0 1 1 164 0a82 82 0 1 1-164 0"/></defs>
+              <circle cx="100" cy="100" r="96" fill="none" stroke-width="1.2" stroke-dasharray="2 5"/>
+              <circle cx="100" cy="100" r="68" fill="none" stroke-width="1.2"/>
+              <text font-size="13" font-weight="600" letter-spacing="3"><textPath href="#volta-carimbo" textLength="505" lengthAdjust="spacing">PADOCA DA KA · VILA NOVA · JOINVILLE ·</textPath></text>
+            </svg>
+            <img src="assets/brand/mascote-160.webp" alt="" width="160" height="136">
+          </div>
+        </figure>
+      </div>
+      <div class="container">
+        <div class="jornada" data-jornada></div>
+        <ol class="fornadas" role="list" data-fornadas></ol>
+      </div>
+    </section>
+
+    <!-- Vitrine: rolar para baixo passa a prateleira de lado -->
+    <section class="vitrine-rolo" id="balcao" aria-labelledby="t-balcao" data-vitrine>
+      <div class="vitrine-rolo__palco">
+        <div class="vitrine-rolo__topo">
+          <div>
+            <p class="eyebrow">Hoje no balcão</p>
+            <h2 id="t-balcao">A vitrine de hoje</h2>
+          </div>
+          <a class="link" href="cardapio.html">Ver cardápio</a>
+        </div>
+        <div class="vitrine-rolo__trilho">
+          <ul class="prateleira" role="list" data-prateleira></ul>
+        </div>
+        <div class="vitrine-rolo__base" aria-hidden="true">
+          <span data-contador>01</span>
+          <div class="vitrine-rolo__progresso"><span data-progresso></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao faixa-bordo" aria-labelledby="t-encomendas">
+      <div class="container">
+        <p class="eyebrow">Encomendas pelo WhatsApp</p>
+        <h2 id="t-encomendas">Monte a sua <em>sacola</em> para festa e café</h2>
+        <ul class="vitrine vitrine--3" role="list" data-encomendas></ul>
+        <a class="btn btn-claro" href="encomendas.html">Montar encomenda</a>
+      </div>
+    </section>
+
+    <section class="secao historia-secao" aria-labelledby="t-historia">
+      <div class="container historia">
+        <div class="historia__texto">
+          <h2 id="t-historia">A padaria da Ka</h2>
+          <!-- [HIPÓTESE] texto provisório -->
+          <p>A Padoca da Ka nasceu em 2026, na São Firmino, para ser a padaria do bairro: pão saindo do forno o dia todo, café passado na hora e aquele salgado que vira hábito.</p>
+        </div>
+        <div class="historia__fotos">
+          <figure class="foto polaroide fita historia__principal" data-foto="A Ka no balcão">
+            <img src="assets/img/loja/ka-no-balcao-960.webp" srcset="assets/img/loja/ka-no-balcao-480.webp 480w, assets/img/loja/ka-no-balcao-960.webp 960w, assets/img/loja/ka-no-balcao-1440.webp 1440w" sizes="(min-width: 48em) 45vw, 90vw" width="960" height="1200" alt="A Ka atendendo no balcão da padaria" loading="lazy">
+          </figure>
+          <figure class="foto polaroide fita historia__detalhe" data-foto="Padeiro no forno">
+            <img src="assets/img/loja/padeiro-forno-960.webp" srcset="assets/img/loja/padeiro-forno-480.webp 480w, assets/img/loja/padeiro-forno-960.webp 960w, assets/img/loja/padeiro-forno-1440.webp 1440w" sizes="(min-width: 48em) 20vw, 45vw" width="960" height="1440" alt="Padeiro colocando pães no forno" loading="lazy">
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="secao mural" aria-labelledby="t-galeria">
+      <div class="container">
+        <div class="secao-topo">
+          <div>
+            <p class="eyebrow">Direto do balcão</p>
+            <h2 id="t-galeria">Feito aqui, todo dia</h2>
+          </div>
+          <a class="link" href="https://www.instagram.com/padocada.ka/">Mais no Instagram</a>
+        </div>
+        <ul class="galeria" role="list">
+          <li>
+            <figure class="foto" data-foto="Bolo de chocolate com morango"><img src="assets/img/doces/bolo-chocolate-morango-960.webp" srcset="assets/img/doces/bolo-chocolate-morango-480.webp 480w, assets/img/doces/bolo-chocolate-morango-960.webp 960w, assets/img/doces/bolo-chocolate-morango-1440.webp 1440w" sizes="(min-width: 48em) 30vw, 46vw" width="960" height="1707" alt="Bolo de chocolate com morangos por cima" loading="lazy"></figure>
+            <p class="galeria__legenda">Bolo de chocolate com morango</p>
+          </li>
+          <li>
+            <figure class="foto" data-foto="Donut de chocolate"><img src="assets/img/doces/donut-960.webp" srcset="assets/img/doces/donut-480.webp 480w, assets/img/doces/donut-960.webp 960w, assets/img/doces/donut-1440.webp 1440w" sizes="(min-width: 48em) 30vw, 46vw" width="960" height="1707" alt="Donuts de chocolate com granulado colorido" loading="lazy"></figure>
+            <p class="galeria__legenda">Donut de chocolate</p>
+          </li>
+          <li>
+            <figure class="foto" data-foto="Casadinho"><img src="assets/img/doces/casadinho-960.webp" srcset="assets/img/doces/casadinho-480.webp 480w, assets/img/doces/casadinho-960.webp 960w, assets/img/doces/casadinho-1440.webp 1440w" sizes="(min-width: 48em) 30vw, 46vw" width="960" height="1042" alt="Bandeja de casadinhos sendo servida no balcão" loading="lazy"></figure>
+            <p class="galeria__legenda">Casadinho</p>
+          </li>
+          <li>
+            <figure class="foto" data-foto="Rosca de queijo e ervas"><img src="assets/img/salgados/rosca-queijo-960.webp" srcset="assets/img/salgados/rosca-queijo-480.webp 480w, assets/img/salgados/rosca-queijo-960.webp 960w, assets/img/salgados/rosca-queijo-1440.webp 1440w" sizes="(min-width: 48em) 30vw, 46vw" width="960" height="1056" alt="Roscas de queijo gratinado com ervas na bandeja" loading="lazy"></figure>
+            <p class="galeria__legenda">Rosca de queijo e ervas</p>
+          </li>
+          <li>
+            <figure class="foto" data-foto="Bolo de limão"><img src="assets/img/doces/bolo-limao-960.webp" srcset="assets/img/doces/bolo-limao-480.webp 480w, assets/img/doces/bolo-limao-960.webp 960w, assets/img/doces/bolo-limao-1440.webp 1440w" sizes="(min-width: 48em) 30vw, 46vw" width="960" height="1707" alt="Bolo de limão com cobertura e raspas" loading="lazy"></figure>
+            <p class="galeria__legenda">Bolo de limão</p>
+          </li>
+          <li>
+            <figure class="foto" data-foto="Rocambole de doce de leite"><img src="assets/img/doces/rocambole-960.webp" srcset="assets/img/doces/rocambole-480.webp 480w, assets/img/doces/rocambole-960.webp 960w, assets/img/doces/rocambole-1440.webp 1440w" sizes="(min-width: 48em) 30vw, 46vw" width="960" height="1707" alt="Rocambole de doce de leite com amendoim" loading="lazy"></figure>
+            <p class="galeria__legenda">Rocambole de doce de leite</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="container" aria-labelledby="t-google">
+      <div class="google">
+        <h2 id="t-google"><span class="google__nota">5,0</span> <span class="google__rotulo">no Google</span></h2>
+        <div class="estrelas" role="img" aria-label="5 de 5 estrelas">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2.5l2.9 6 6.6.8-4.9 4.5 1.3 6.5L12 17l-5.9 3.3 1.3-6.5-4.9-4.5 6.6-.8z"/></svg>
+        </div>
+        <p>8 avaliações</p>
+        <!-- trocar por config.googleAvaliar quando houver o link direto -->
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">Avaliar no Google</a>
+      </div>
+    </section>
+
+    <section class="secao" aria-labelledby="t-visite">
+      <div class="container visite">
+        <div>
+          <h2 id="t-visite">Visite a gente</h2>
+          <figure class="foto polaroide fita visite__fachada" data-foto="Fachada na São Firmino">
+            <img src="assets/img/loja/fachada-960.webp" srcset="assets/img/loja/fachada-480.webp 480w, assets/img/loja/fachada-960.webp 960w, assets/img/loja/fachada-1440.webp 1440w" sizes="(min-width: 48em) 35vw, 100vw" width="960" height="600" alt="Fachada da Padoca da Ka na R. São Firmino, 555" loading="lazy">
+          </figure>
+          <div class="visite-acoes">
+            <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">Rotas</a>
+            <a class="link" href="visite.html">Ver horários e como chegar</a>
+          </div>
+        </div>
+        <iframe class="mapa" title="Mapa: Padoca da Ka na R. São Firmino, 555" src="https://maps.google.com/maps?q=R.%20S%C3%A3o%20Firmino%2C%20555%20-%20Vila%20Nova%2C%20Joinville%20-%20SC&amp;z=16&amp;output=embed" width="600" height="410" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="rodape-grid">
+        <a class="logo" href="index.html" aria-label="Padoca da Ka, início">
+          <img src="assets/brand/mascote-160.webp" srcset="assets/brand/mascote-160.webp 160w, assets/brand/mascote-320.webp 320w" sizes="96px" alt="" width="160" height="136" loading="lazy">
+        </a>
+        <div>
+          <h2>Endereço</h2>
+          <address>
+            R. São Firmino, 555 — Vila Nova<br>
+            Joinville — SC, 89237-355
+          </address>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">Como chegar</a>
+        </div>
+        <div>
+          <h2>Horário</h2>
+          <p>Todos os dias, das 7h às 19h30</p>
+        </div>
+        <div>
+          <h2>Fale com a gente</h2>
+          <ul>
+            <li><a href="https://wa.me/5547999431617?text=Oi%2C%20Padoca%20da%20Ka!%20Vim%20pelo%20site.">WhatsApp (47) 99943-1617</a></li>
+            <li><a href="https://www.instagram.com/padocada.ka/">Instagram @padocada.ka</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="credito">Site por Royco Studio</p>
+    </div>
+  </footer>
+
+  <nav class="barra" aria-label="Atalhos">
+    <a href="https://wa.me/5547999431617?text=Oi%2C%20Padoca%20da%20Ka!%20Vim%20pelo%20site.">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+      WhatsApp
+    </a>
+    <a class="principal" href="encomendas.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11l-1-12z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+      Encomendar
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Rotas
+    </a>
+  </nav>
+</body>
+</html>

@@ -1,0 +1,485 @@
+<!doctype html>
+<html lang="pt-BR" data-periodo="tarde">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Protótipo · Padoca da Ka</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="assets/brand/favicon-48.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <style>
+    /* ============================================================
+       PROTÓTIPO: vitrine + relógio da fornada + papel de pão.
+       Tudo aqui é isolado desta página; nada mexe na home atual.
+       ============================================================ */
+
+    /* papel de pão: grão sutil por cima da cor do período */
+    :root {
+      --topo: 4.5rem;
+      --papel: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .3 0 0 0 0 .16 0 0 0 0 .08 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    /* clima do dia (o JS escolhe pela hora de Joinville) */
+    html[data-periodo="manha"] { --fundo: #FAF0E4; --tinta: #3F060C; --suave: rgb(63 6 12 / 0.72); --acento: #6D020C; --tabua: #C9A27A; --linha: rgb(63 6 12 / 0.14); }
+    html[data-periodo="tarde"] { --fundo: #EEDBC1; --tinta: #3F060C; --suave: rgb(63 6 12 / 0.75); --acento: #6D020C; --tabua: #A87B52; --linha: rgb(63 6 12 / 0.16); }
+    html[data-periodo="noite"] { --fundo: #2E0508; --tinta: #FAF0E4; --suave: rgb(250 240 228 / 0.74); --acento: #E9B377; --tabua: #6B3A22; --linha: rgb(250 240 228 / 0.16); }
+
+    body {
+      padding-bottom: 0;
+      background-color: var(--fundo);
+      background-image: var(--papel);
+      color: var(--tinta);
+      transition: background-color 0.8s ease, color 0.8s ease;
+    }
+    :focus-visible { outline-color: var(--acento); }
+
+    .p-eyebrow { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--suave); }
+    .p-link { display: inline-flex; align-items: center; min-height: 44px; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.6em; }
+    .p-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.6rem;
+      min-height: 54px; padding: 0.8rem 1.8rem; border-radius: 999px;
+      background: var(--acento); color: var(--fundo);
+      font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none;
+      transition: transform 0.2s, background-color 0.8s, color 0.8s;
+    }
+    .p-btn:hover { transform: translateY(-2px); }
+    .p-btn svg { width: 18px; height: 18px; }
+
+    /* ---------- Topo ---------- */
+    .p-topo {
+      position: sticky; top: 0; z-index: 30;
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+      height: var(--topo); padding-inline: 4vw;
+      background: color-mix(in srgb, var(--fundo) 86%, transparent);
+      -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--linha);
+      transition: background-color 0.8s;
+    }
+    .p-marca img { width: 60px; height: auto; }
+    .p-nav { display: none; gap: 2.5rem; }
+    .p-nav a { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; text-decoration: none; }
+    .p-nav a:hover { text-decoration: underline; text-underline-offset: 0.6em; }
+    .p-sacola { min-height: 44px; padding: 0.5rem 1.1rem; font-size: 0.7rem; }
+    @media (min-width: 60em) { .p-nav { display: flex; } }
+
+    /* ---------- Hero: relógio da fornada ---------- */
+    .p-hero {
+      position: relative;
+      display: grid; align-items: center; gap: 2rem;
+      min-height: calc(100svh - var(--topo));
+      padding: 2rem 6vw 3rem;
+      overflow: clip;
+    }
+    .p-selo {
+      display: inline-flex; align-items: center; gap: 0.55rem;
+      padding: 0.4rem 0.95rem; border: 1px solid var(--linha); border-radius: 999px;
+      font-size: 0.85rem; font-weight: 500;
+    }
+    .p-selo::before { content: ""; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--acento); }
+    .p-selo.aberto::before { background: #2E9B5B; box-shadow: 0 0 0 3px rgb(46 155 91 / 0.22); }
+    .p-hero__texto { position: relative; z-index: 2; display: grid; justify-items: start; gap: 1.1rem; }
+    .p-titulo {
+      max-width: 14ch;
+      font-size: clamp(2.7rem, 8.5vw, 5.8rem);
+      font-weight: 300; line-height: 0.95; letter-spacing: -0.04em;
+      text-wrap: balance;
+    }
+    .p-titulo em { font-style: normal; color: var(--acento); transition: color 0.8s; }
+    .p-contagem { display: flex; align-items: baseline; gap: 0.8rem; margin-top: 0.3rem; }
+    .p-contagem span { font-size: 0.72rem; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--suave); }
+    .p-contagem strong { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 300; letter-spacing: -0.03em; color: var(--acento); font-variant-numeric: tabular-nums; }
+    .p-acoes { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 2rem; margin-top: 0.8rem; }
+
+    /* polaroide colada com fita */
+    .p-polaroide {
+      position: relative; z-index: 1;
+      justify-self: end;
+      width: min(62vw, 360px);
+      margin: 0; padding: 10px 10px 42px;
+      background: #FFFDF8;
+      box-shadow: 0 30px 50px -28px rgb(20 2 4 / 0.55);
+      rotate: 3deg;
+      translate: 0 var(--sobe, 0px);
+    }
+    .p-polaroide > img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .p-polaroide figcaption {
+      position: absolute; left: 0; right: 0; bottom: 12px; text-align: center;
+      color: #3F060C; font-size: 0.66rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
+    }
+    .fita::before {
+      content: ""; position: absolute; z-index: 2;
+      top: -13px; left: 50%; width: 92px; height: 26px; translate: -50% 0; rotate: -4deg;
+      background: rgb(255 244 214 / 0.72);
+      box-shadow: 0 1px 2px rgb(0 0 0 / 0.08);
+    }
+
+    /* carimbo redondo com a mascote (gira com o scroll) */
+    /* carimbado no canto da polaroide */
+    .p-carimbo {
+      position: absolute; z-index: 3;
+      left: -56px; bottom: -40px;
+      width: clamp(110px, 12vw, 150px); aspect-ratio: 1;
+      rotate: var(--giro, 0deg);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--fundo) 92%, transparent);
+      transition: background-color 0.8s;
+    }
+    .p-carimbo svg { width: 100%; height: 100%; overflow: visible; }
+    .p-carimbo text { fill: var(--acento); transition: fill 0.8s; }
+    .p-carimbo circle { stroke: var(--acento); transition: stroke 0.8s; }
+    .p-carimbo img { position: absolute; inset: 24%; width: 52%; height: auto; rotate: calc(var(--giro, 0deg) * -1); }
+
+    @media (min-width: 60em) {
+      .p-hero { grid-template-columns: 1.3fr 1fr; padding-inline: 8vw; }
+      .p-polaroide { justify-self: center; }
+    }
+    @media (max-width: 59.99em) {
+      .p-hero { gap: 1.2rem; padding-top: 1.5rem; }
+      .p-polaroide { order: -1; width: min(46vw, 230px); margin: 0.5rem 0.5rem -0.5rem 0; padding: 7px 7px 32px; rotate: 4deg; }
+      .p-polaroide figcaption { bottom: 9px; font-size: 0.55rem; }
+      .p-carimbo { left: -44px; bottom: -30px; width: 96px; }
+    }
+
+    /* ---------- Vitrine (scroll horizontal) ---------- */
+    .p-vitrine { position: relative; }
+    .p-palco {
+      position: sticky; top: var(--topo);
+      height: calc(100svh - var(--topo));
+      display: grid; grid-template-rows: auto 1fr auto; gap: 1rem;
+      padding: 2rem 0 1.5rem;
+      overflow: hidden;
+    }
+    .p-palco__topo { padding-inline: 6vw; display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 0.5rem 2rem; }
+    .p-palco__topo h2 { margin-top: 0.4rem; font-size: clamp(2rem, 6vw, 3.6rem); }
+    .p-trilho { align-self: center; min-width: 0; overflow: hidden; }
+    .p-prateleira {
+      /* largura da redoma: limitada pela largura e pela altura da tela (tudo cabe no palco) */
+      --w: clamp(170px, min(24vw, (100svh - 22rem) * 0.8), 300px);
+      --h-foto: calc(var(--w) * 1.25);
+      display: flex; gap: clamp(1.8rem, 4vw, 3.5rem);
+      width: max-content; padding: 0 6vw;
+      list-style: none;
+      will-change: transform;
+      /* a tábua da prateleira passa por baixo de todas as redomas */
+      background: linear-gradient(to bottom,
+        transparent var(--h-foto),
+        var(--tabua) var(--h-foto), var(--tabua) calc(var(--h-foto) + 10px),
+        rgb(0 0 0 / 0.18) calc(var(--h-foto) + 10px), transparent calc(var(--h-foto) + 22px));
+    }
+    .p-produto { width: var(--w); flex: none; display: grid; justify-items: center; }
+    /* redoma de vidro de confeitaria */
+    .p-redoma {
+      position: relative; width: 100%; height: var(--h-foto);
+      border-radius: 999px 999px 10px 10px; overflow: hidden;
+      box-shadow: 0 26px 30px -26px rgb(20 2 4 / 0.6);
+    }
+    .p-redoma img { width: 100%; height: 100%; object-fit: cover; }
+    .p-redoma::after {
+      content: ""; position: absolute; inset: 0; border-radius: inherit;
+      border: 1px solid rgb(255 255 255 / 0.45);
+      background: linear-gradient(115deg, rgb(255 255 255 / 0.38) 0%, rgb(255 255 255 / 0) 30%, rgb(255 255 255 / 0) 72%, rgb(255 255 255 / 0.14) 100%);
+    }
+    /* plaquinha de preço pendurada no barbante: balança com a velocidade do scroll */
+    .p-pendurada {
+      --giro: -2deg;
+      position: relative; margin-top: 34px; min-width: 78%;
+      transform-origin: 50% -34px;
+      rotate: calc(var(--giro) + var(--balanco, 0deg));
+      transition: rotate 1.1s cubic-bezier(0.25, 1.6, 0.45, 1);
+      filter: drop-shadow(0 10px 12px rgb(20 2 4 / 0.22));
+    }
+    .p-produto:nth-child(2n) .p-pendurada { --giro: 1.5deg; }
+    .p-produto:nth-child(3n) .p-pendurada { --giro: -0.5deg; }
+    .p-pendurada::before {
+      content: ""; position: absolute; left: 50%; top: -34px; width: 1px; height: 38px;
+      background: var(--suave);
+    }
+    .p-plaquinha {
+      display: grid; gap: 0.2rem; padding: 1rem 1.1rem 0.9rem;
+      background: #FFFDF8; color: #3F060C;
+      border-top: 4px solid var(--casca);
+      clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+    }
+    .p-plaquinha::after { content: ""; position: absolute; left: 50%; top: 9px; width: 7px; height: 7px; translate: -50% 0; border-radius: 50%; background: rgb(63 6 12 / 0.25); }
+    .p-plaquinha__sai { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6D020C; }
+    .p-plaquinha__nome { font-size: 1.02rem; font-weight: 500; line-height: 1.2; }
+    .p-plaquinha__preco { display: flex; align-items: baseline; gap: 0.35rem; margin-top: 0.35rem; font-size: 0.85rem; }
+    .p-plaquinha__preco strong { font-size: 1.9rem; font-weight: 300; letter-spacing: -0.03em; color: #6D020C; }
+    .p-plaquinha a { justify-self: start; min-height: 36px; display: inline-flex; align-items: center; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #6D020C; text-underline-offset: 0.5em; }
+    .p-palco__base { display: flex; align-items: center; gap: 1rem; padding-inline: 6vw; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; color: var(--suave); }
+    .p-progresso { flex: 1; max-width: 240px; height: 2px; background: var(--linha); }
+    .p-progresso span { display: block; height: 100%; width: var(--p, 0%); background: var(--acento); }
+    /* sem animação (movimento reduzido): vitrine vira faixa com rolagem lateral normal */
+    .sem-anima .p-palco { position: static; height: auto; }
+    .sem-anima .p-trilho { overflow-x: auto; padding-bottom: 1rem; }
+    @media (max-width: 47.99em) { .p-prateleira { --w: min(62vw, (100svh - 22rem) * 0.8); } }
+
+    /* ---------- Mural (papel de pão) ---------- */
+    .p-mural { padding: 5rem 6vw 6rem; }
+    .p-mural h2 { margin: 0.4rem 0 3rem; font-size: clamp(2rem, 6vw, 3.6rem); }
+    .p-mural ul { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(2, 1fr); gap: 2.4rem 1.2rem; }
+    .p-mural li {
+      --r: -2deg;
+      position: relative; padding: 9px 9px 40px; background: #FFFDF8;
+      box-shadow: 0 18px 28px -18px rgb(20 2 4 / 0.5);
+      rotate: var(--r);
+      transition: opacity 0.9s ease, translate 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), rotate 0.9s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+    .p-mural li:nth-child(3n+2) { --r: 1.8deg; }
+    .p-mural li:nth-child(3n) { --r: -0.8deg; }
+    .p-mural li:nth-child(4n) { --r: 2.6deg; }
+    .p-mural img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; }
+    .p-mural p { position: absolute; left: 0; right: 0; bottom: 12px; text-align: center; color: #3F060C; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; }
+    .anima .p-mural li:not(.visto) { opacity: 0; translate: 0 50px; rotate: calc(var(--r) * 4); }
+    .p-mural li:nth-child(3n+2) { transition-delay: 0.1s; }
+    .p-mural li:nth-child(3n) { transition-delay: 0.2s; }
+    @media (min-width: 48em) {
+      .p-mural { padding-inline: 8vw; }
+      .p-mural ul { grid-template-columns: repeat(3, 1fr); gap: 3.5rem 2.5rem; }
+    }
+
+    /* ---------- Sacola (encomendas) ---------- */
+    .p-sacola-faixa {
+      display: grid; justify-items: center; gap: 1.2rem; text-align: center;
+      padding: 5rem 6vw; background: #6D020C; color: #FAF0E4;
+      background-image: var(--papel);
+    }
+    .p-sacola-faixa .p-eyebrow { color: rgb(250 240 228 / 0.8); }
+    .p-sacola-faixa p.p-grande { max-width: 16ch; font-size: clamp(2.2rem, 7vw, 4.5rem); font-weight: 300; line-height: 1; letter-spacing: -0.035em; }
+    .p-sacola-faixa em { font-style: normal; color: #E9B377; }
+    .p-sacola-faixa .p-btn { background: #FAF0E4; color: #6D020C; }
+
+    /* ---------- Barrinha de demonstração (só no protótipo) ---------- */
+    .p-demo {
+      position: fixed; left: 50%; bottom: 14px; z-index: 50; translate: -50% 0;
+      display: flex; align-items: center; gap: 0.3rem; padding: 0.3rem 0.35rem 0.3rem 0.9rem;
+      border-radius: 999px; background: #1d0305; color: #FAF0E4;
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.3);
+      font-size: 0.7rem; white-space: nowrap;
+    }
+    .p-demo button { min-height: 34px; padding: 0 0.8rem; border: 0; border-radius: 999px; background: transparent; font-size: 0.7rem; font-weight: 600; }
+    .p-demo button[aria-pressed="true"] { background: #FAF0E4; color: #1d0305; }
+  </style>
+  <script src="js/config.js" defer></script>
+  <script src="js/cardapio-data.js" defer></script>
+  <script src="js/status.js" defer></script>
+</head>
+<body>
+  <header class="p-topo">
+    <a class="p-marca" href="index.html"><img src="assets/brand/mascote-160.webp" alt="" width="160" height="136"><span class="visually-hidden">Padoca da Ka</span></a>
+    <nav class="p-nav" aria-label="Principal">
+      <a href="cardapio.html">Cardápio</a>
+      <a href="encomendas.html">Encomendas</a>
+      <a href="visite.html">Visite</a>
+    </nav>
+    <a class="p-btn p-sacola" href="encomendas.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11l-1-12z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+      Encomendar
+    </a>
+  </header>
+
+  <main id="conteudo">
+    <!-- 1. Relógio da fornada -->
+    <section class="p-hero" aria-labelledby="t-hero">
+      <h1 id="t-hero" class="visually-hidden">Padoca da Ka, padaria no Vila Nova, Joinville</h1>
+      <div class="p-hero__texto">
+        <p class="p-selo" data-selo>Todos os dias, das 7h às 19h30</p>
+        <p class="p-eyebrow" data-rotulo>Próxima fornada</p>
+        <p class="p-titulo"><span data-itens>Pão francês</span> <em data-quando>sai às 16h30.</em></p>
+        <p class="p-contagem"><span data-falta-rotulo>faltam</span> <strong data-falta>—</strong></p>
+        <div class="p-acoes">
+          <a class="p-btn" href="encomendas.html">Fazer encomenda</a>
+          <a class="p-link" href="#vitrine">Ver a vitrine</a>
+        </div>
+      </div>
+      <figure class="p-polaroide fita" data-polaroide>
+        <img data-foto src="assets/img/fornadas/vitrine-paes-960.webp" width="960" height="1200" alt="">
+        <figcaption data-legenda>Fornada das 16h30</figcaption>
+        <div class="p-carimbo" aria-hidden="true" data-carimbo>
+          <svg viewBox="0 0 200 200">
+            <defs><path id="volta" d="M100 100m-82 0a82 82 0 1 1 164 0a82 82 0 1 1-164 0"/></defs>
+            <circle cx="100" cy="100" r="96" fill="none" stroke-width="1.2" stroke-dasharray="2 5"/>
+            <circle cx="100" cy="100" r="68" fill="none" stroke-width="1.2"/>
+            <text font-size="13" font-weight="600" letter-spacing="3"><textPath href="#volta" textLength="505" lengthAdjust="spacing">PADOCA DA KA · VILA NOVA · JOINVILLE ·</textPath></text>
+          </svg>
+          <img src="assets/brand/mascote-160.webp" alt="" width="160" height="136">
+        </div>
+      </figure>
+    </section>
+
+    <!-- 2. Vitrine: rolar para baixo passa a prateleira de lado -->
+    <section class="p-vitrine" id="vitrine" aria-labelledby="t-vitrine" data-vitrine>
+      <div class="p-palco">
+        <div class="p-palco__topo">
+          <div>
+            <p class="p-eyebrow">Hoje no balcão</p>
+            <h2 id="t-vitrine">A vitrine de hoje</h2>
+          </div>
+          <a class="p-link" href="cardapio.html">Ver cardápio</a>
+        </div>
+        <div class="p-trilho">
+          <ul class="p-prateleira" role="list" data-prateleira></ul>
+        </div>
+        <div class="p-palco__base" aria-hidden="true">
+          <span data-contador>01 / 07</span>
+          <div class="p-progresso"><span data-progresso></span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Mural de papel de pão -->
+    <section class="p-mural" aria-labelledby="t-mural">
+      <p class="p-eyebrow">Direto do balcão</p>
+      <h2 id="t-mural">Feito aqui, todo dia</h2>
+      <ul role="list" data-mural></ul>
+    </section>
+
+    <!-- 4. Sacola -->
+    <section class="p-sacola-faixa" aria-labelledby="t-sacola">
+      <p class="p-eyebrow">Encomendas pelo WhatsApp</p>
+      <p class="p-grande" id="t-sacola">Monte a sua <em>sacola</em> para festa e café.</p>
+      <a class="p-btn" href="encomendas.html">Montar encomenda</a>
+    </section>
+  </main>
+
+  <div class="p-demo" role="group" aria-label="Protótipo: ver o site em outro horário">
+    Ver como
+    <button type="button" data-simula="" aria-pressed="true">Agora</button>
+    <button type="button" data-simula="580" aria-pressed="false">Manhã</button>
+    <button type="button" data-simula="940" aria-pressed="false">Tarde</button>
+    <button type="button" data-simula="1190" aria-pressed="false">Noite</button>
+  </div>
+
+  <script>
+    addEventListener('DOMContentLoaded', () => {
+      const P = window.PADOCA, S = window.PadocaStatus, raiz = document.documentElement;
+      const reduz = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!reduz) raiz.classList.add('anima');
+
+      const UNIDADE = { un: 'un', kg: 'o kg', fatia: 'a fatia', cento: 'o cento' };
+      const brl = (v) => 'R$ ' + v.toLocaleString('pt-BR', { minimumFractionDigits: v % 1 ? 2 : 0, maximumFractionDigits: 2 });
+      const img = (base, alt, sizes, w = 960, h = 1200) => `<img src="${base}-960.webp" srcset="${base}-480.webp 480w, ${base}-960.webp 960w, ${base}-1440.webp 1440w" sizes="${sizes}" width="${w}" height="${h}" alt="${alt}" loading="lazy">`;
+
+      /* ---------- relógio da fornada + clima do dia ---------- */
+      let simulado = null; // minutos do dia (demonstração)
+      const agora = () => simulado == null ? new Date() : new Date(Date.now() + (simulado - S.agora(new Date()).min) * 60000);
+      const periodo = (min) => (min < 11 * 60 ? 'manha' : min < 17 * 60 ? 'tarde' : 'noite');
+      const $ = (s) => document.querySelector(s);
+
+      function pintaHero() {
+        const d = agora();
+        const { min, dia } = S.agora(d);
+        raiz.dataset.periodo = periodo(min);
+
+        const st = S.status(d, P.horarios);
+        const selo = $('[data-selo]');
+        selo.textContent = st.texto;
+        selo.classList.toggle('aberto', st.aberto);
+
+        const est = S.fornadasHoje(d, P.fornadas);
+        let i = est.findIndex((e) => e.estado === 'agora'), modo = 'agora';
+        if (i < 0) { i = est.findIndex((e) => e.estado === 'proxima'); modo = 'proxima'; }
+        if (i < 0) { i = 0; modo = 'amanha'; }
+        const f = P.fornadas[i], h = S.hora(f.hora);
+        $('[data-rotulo]').textContent = { agora: 'Saindo do forno', proxima: 'Próxima fornada', amanha: 'Amanhã cedo' }[modo];
+        $('[data-itens]').textContent = f.itens;
+        $('[data-quando]').textContent = { agora: 'quentinho agora.', proxima: `sai às ${h}.`, amanha: `sai às ${h}.` }[modo];
+        $('[data-falta-rotulo]').textContent = { agora: 'saiu há', proxima: 'faltam', amanha: 'abrimos às' }[modo];
+        $('[data-falta]').textContent = modo === 'agora' ? S.duracao(Math.max(1, min - S.minutos(f.hora))) : modo === 'proxima' ? S.duracao(est[i].falta) : S.hora((P.horarios[(dia + 1) % 7] || P.horarios[0])[0]);
+        const base = f.foto || 'assets/img/fornadas/cesto-paes';
+        const foto = $('[data-foto]');
+        foto.src = base + '-960.webp';
+        foto.srcset = `${base}-480.webp 480w, ${base}-960.webp 960w`;
+        foto.sizes = '(min-width: 60em) 360px, 62vw';
+        foto.alt = f.itens;
+        $('[data-legenda]').textContent = `Fornada das ${h}`;
+      }
+      pintaHero();
+      setInterval(pintaHero, 30000);
+
+      document.querySelectorAll('[data-simula]').forEach((b) => b.addEventListener('click', () => {
+        simulado = b.dataset.simula === '' ? null : +b.dataset.simula;
+        document.querySelectorAll('[data-simula]').forEach((x) => x.setAttribute('aria-pressed', x === b));
+        pintaHero();
+      }));
+
+      /* ---------- vitrine ---------- */
+      const produtos = window.CARDAPIO.flatMap((c) => c.itens).filter((i) => i.foto);
+      const prateleira = $('[data-prateleira]');
+      prateleira.innerHTML = produtos.map((i) => `<li class="p-produto">
+        <div class="p-redoma">${img(i.foto, i.nome, '(min-width: 48em) 24vw, 62vw')}</div>
+        <div class="p-pendurada"><div class="p-plaquinha">
+          ${i.fornada ? `<span class="p-plaquinha__sai">Sai às ${S.hora(i.fornada)}</span>` : ''}
+          <span class="p-plaquinha__nome">${i.nome}</span>
+          <span class="p-plaquinha__preco"><strong>${brl(i.preco)}</strong> ${UNIDADE[i.unidade] || ''}</span>
+          ${i.encomenda ? `<a href="encomendas.html?item=${i.encomenda}">Encomendar<span class="visually-hidden"> ${i.nome}</span></a>` : ''}
+        </div></div>
+      </li>`).join('');
+
+      /* ---------- mural ---------- */
+      const mural = [
+        ['doces/bolo-chocolate-morango', 'Bolo de chocolate com morango'],
+        ['doces/donut', 'Donut de chocolate'],
+        ['doces/casadinho', 'Casadinho'],
+        ['salgados/rosca-queijo', 'Rosca de queijo e ervas'],
+        ['doces/bolo-limao', 'Bolo de limão'],
+        ['doces/rocambole', 'Rocambole de doce de leite'],
+      ];
+      $('[data-mural]').innerHTML = mural.map(([b, n]) => `<li class="fita">${img('assets/img/' + b, n, '(min-width: 48em) 28vw, 45vw')}<p>${n}</p></li>`).join('');
+
+      /* ---------- animações de scroll ---------- */
+      const vitrine = $('[data-vitrine]'), trilho = $('.p-trilho');
+      const contador = $('[data-contador]'), progresso = $('[data-progresso]');
+      const carimbo = $('[data-carimbo]'), polaroide = $('[data-polaroide]');
+      const doisDigitos = (n) => String(n).padStart(2, '0');
+
+      if (reduz) {
+        raiz.classList.add('sem-anima');
+      } else {
+        // a seção tem a altura do palco + o quanto a prateleira precisa andar:
+        // o palco fica preso exatamente durante esses "extra" pixels de rolagem
+        let extra = 0, topo = 0;
+        const mede = () => {
+          topo = $('.p-topo').offsetHeight;
+          extra = Math.max(0, prateleira.scrollWidth - trilho.clientWidth);
+          vitrine.style.height = `calc(100svh - ${topo}px + ${extra}px)`;
+        };
+        let ultimoY = scrollY, vel = 0, rodando = false;
+        const quadro = () => {
+          const y = scrollY;
+          // prateleira anda de lado conforme a vitrine passa pela tela
+          const p = extra ? Math.min(Math.max((y - vitrine.offsetTop + topo) / extra, 0), 1) : 0;
+          prateleira.style.transform = `translate3d(${(-p * extra).toFixed(1)}px, 0, 0)`;
+          contador.textContent = `${doisDigitos(Math.round(p * (produtos.length - 1)) + 1)} / ${doisDigitos(produtos.length)}`;
+          progresso.style.setProperty('--p', (p * 100).toFixed(1) + '%');
+          // plaquinhas balançam contra o movimento e voltam devagar
+          vel = vel * 0.8 + (y - ultimoY) * 0.2;
+          ultimoY = y;
+          prateleira.style.setProperty('--balanco', `${Math.max(-10, Math.min(10, -vel * 0.35)).toFixed(2)}deg`);
+          // carimbo gira e polaroide sobe mais devagar que a página
+          carimbo.style.setProperty('--giro', `${(y * 0.06).toFixed(1)}deg`);
+          polaroide.style.setProperty('--sobe', `${(y * -0.12).toFixed(1)}px`);
+          if (Math.abs(vel) > 0.05) requestAnimationFrame(quadro); else rodando = false;
+        };
+        const acorda = () => { if (!rodando) { rodando = true; requestAnimationFrame(quadro); } };
+        addEventListener('scroll', acorda, { passive: true });
+        addEventListener('resize', () => { mede(); acorda(); });
+        addEventListener('load', () => { mede(); acorda(); });
+        mede(); acorda();
+
+        // fotos do mural caem no lugar quando entram na tela
+        const itens = document.querySelectorAll('.p-mural li');
+        const io = new IntersectionObserver((es) => es.forEach((e) => {
+          if (e.isIntersecting) { e.target.classList.add('visto'); io.unobserve(e.target); }
+        }), { rootMargin: '0px 0px -10% 0px' });
+        itens.forEach((li) => io.observe(li));
+        // rede de segurança: nada fica escondido se o observer falhar
+        setTimeout(() => itens.forEach((li) => li.classList.add('visto')), 8000);
+      }
+    });
+  </script>
+</body>
+</html>

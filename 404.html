@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Página não encontrada | Padoca da Ka</title>
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#6D020C">
+  <link rel="icon" href="/assets/brand/favicon-48.png" type="image/png">
+  <link rel="apple-touch-icon" href="/assets/brand/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&display=swap">
+  <link rel="stylesheet" href="/css/tokens.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/components.css">
+  <script>
+    document.documentElement.classList.add('js');
+    // foto que ainda não existe: vira moldura com o nome dela (ver .foto.vazia)
+    addEventListener('error', function (e) {
+      var i = e.target;
+      if (i.tagName !== 'IMG') return;
+      var f = i.closest('.foto');
+      if (f) f.classList.add('vazia');
+      if (f) i.remove();
+    }, true);
+  </script>
+  <script src="/js/config.js" defer></script>
+  <script src="/js/cardapio-data.js" defer></script>
+  <script src="/js/status.js" defer></script>
+  <script src="/js/main.js" defer></script>
+</head>
+<body>
+  <a class="pular" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="container header-linha">
+      <a class="logo" href="/index.html" aria-label="Padoca da Ka, início">
+        <img src="/assets/brand/mascote-160.webp" srcset="/assets/brand/mascote-160.webp 160w, /assets/brand/mascote-320.webp 320w" sizes="(min-width: 60em) 96px, 64px" alt="" width="160" height="136">
+      </a>
+      <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menu">
+        <svg class="abrir" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 8h16M4 16h16"/></svg>
+        <svg class="fechar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <!-- dois grupos com a logo no meio (desktop); no mobile viram uma lista só -->
+      <nav class="nav" id="menu" aria-label="Principal">
+        <ul class="nav-esq" role="list">
+          <li><a href="/index.html">Início</a></li>
+          <li><a href="/cardapio.html">Cardápio</a></li>
+        </ul>
+        <ul class="nav-dir" role="list">
+          <li><a href="/encomendas.html">Encomendas</a></li>
+          <li><a href="/visite.html">Visite</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <section class="secao erro-404" aria-labelledby="t-404">
+      <div class="container">
+        <img class="erro-404__mascote" src="/assets/brand/mascote-320.webp" width="320" height="272" alt="">
+        <p class="eyebrow">Erro 404</p>
+        <h1 id="t-404">Essa fornada não saiu.</h1>
+        <p>A página que você procurou não existe ou mudou de lugar.</p>
+        <div class="visite-botoes">
+          <a class="btn" href="/index.html">Voltar ao início</a>
+          <a class="btn btn-contorno-escuro" href="/cardapio.html">Ver o cardápio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="rodape-grid">
+        <a class="logo" href="/index.html" aria-label="Padoca da Ka, início">
+          <img src="/assets/brand/mascote-160.webp" srcset="/assets/brand/mascote-160.webp 160w, /assets/brand/mascote-320.webp 320w" sizes="96px" alt="" width="160" height="136" loading="lazy">
+        </a>
+        <div>
+          <h2>Endereço</h2>
+          <address>
+            R. São Firmino, 555 — Vila Nova<br>
+            Joinville — SC, 89237-355
+          </address>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">Como chegar</a>
+        </div>
+        <div>
+          <h2>Horário</h2>
+          <p>Todos os dias, das 7h às 19h30</p>
+        </div>
+        <div>
+          <h2>Fale com a gente</h2>
+          <ul>
+            <li><a href="https://wa.me/5547999431617?text=Oi%2C%20Padoca%20da%20Ka!%20Vim%20pelo%20site.">WhatsApp (47) 99943-1617</a></li>
+            <li><a href="https://www.instagram.com/padocada.ka/">Instagram @padocada.ka</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="credito">Site por Royco Studio</p>
+    </div>
+  </footer>
+
+  <nav class="barra" aria-label="Atalhos">
+    <a href="https://wa.me/5547999431617?text=Oi%2C%20Padoca%20da%20Ka!%20Vim%20pelo%20site.">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.3-3.9A8 8 0 1 1 8 19.1L4 20z"/></svg>
+      WhatsApp
+    </a>
+    <a class="principal" href="/encomendas.html">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5.5 8h13l-1 12h-11l-1-12z"/><path d="M9 8a3 3 0 0 1 6 0"/></svg>
+      Encomendar
+    </a>
+    <a href="https://www.google.com/maps/search/?api=1&amp;query=Padoca+da+Ka+R.+S%C3%A3o+Firmino+555+Vila+Nova+Joinville">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+      Rotas
+    </a>
+  </nav>
+</body>
+</html>

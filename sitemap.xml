@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- domínio sugerido no brief (padocadaka.com.br): trocar junto com o DOMINIO das páginas -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://padocadaka.com.br/</loc><lastmod>2026-09-28</lastmod><priority>1.0</priority></url>
+  <url><loc>https://padocadaka.com.br/encomendas.html</loc><lastmod>2026-09-28</lastmod><priority>0.9</priority></url>
+  <url><loc>https://padocadaka.com.br/cardapio.html</loc><lastmod>2026-09-28</lastmod><priority>0.8</priority></url>
+  <url><loc>https://padocadaka.com.br/visite.html</loc><lastmod>2026-09-28</lastmod><priority>0.8</priority></url>
+</urlset>

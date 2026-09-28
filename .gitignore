@@ -1,0 +1,24 @@
+# Ferramentas locais / config do assistente — não faz parte do site
+.claude/
+
+# Material bruto de trabalho (originais das fotos; os arquivos publicados vivem em assets/img/)
+/assets/img/_originais/*
+!/assets/img/_originais/CREDITOS-UNSPLASH.md
+/assets/brand/_originais/
+
+# SO / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.log
+
+# Node (o site não usa Node; evita lixo de ferramentas locais como o sharp)
+node_modules/
+npm-debug.log*
+
+# Segredos — nunca versionar chave privada, .env etc.
+*.pem
+*.key
+.env
+.env.*
