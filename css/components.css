@@ -1098,8 +1098,9 @@
   /* preso ao lado dos itens; se não couber na tela, rola por dentro (o botão de enviar nunca some) */
   .montador__pedido {
     position: sticky;
-    top: 4.25rem;
-    max-height: calc(100vh - 5.25rem);
+    /* abaixo do header fixo e da faixa de categorias */
+    top: calc(var(--header-h) + 4.25rem);
+    max-height: calc(100vh - var(--header-h) - 5.25rem);
     overflow-y: auto;
     overscroll-behavior: contain;
     scrollbar-width: thin;
@@ -1498,13 +1499,11 @@
 .erro-404 p:not(.eyebrow) { color: var(--suave); }
 .erro-404 .visite-botoes { justify-content: center; }
 
-/* ---------- Header fixo no mobile (todas as páginas) ---------- */
+/* ---------- Header fixo no topo (todas as páginas, mobile e desktop) ---------- */
 /* o menu fica sempre à mão, sem precisar voltar ao topo; na home o header
    já é fixed sobre o vídeo (.site-header--vidro) */
-@media (max-width: 59.99em) {
-  .site-header:not(.site-header--vidro) { position: sticky; top: 0; }
-  /* a faixa de categorias gruda logo abaixo do header */
-  .grupos-nav { top: var(--header-h); }
-  /* atalhos param a seção abaixo do header + faixa de categorias */
-  .grupo, .categoria { scroll-margin-top: calc(var(--header-h) + 3.5rem); }
-}
+.site-header:not(.site-header--vidro) { position: sticky; top: 0; }
+/* a faixa de categorias gruda logo abaixo do header */
+.grupos-nav { top: var(--header-h); }
+/* atalhos param a seção abaixo do header + faixa de categorias */
+.grupo, .categoria { scroll-margin-top: calc(var(--header-h) + 3.5rem); }
